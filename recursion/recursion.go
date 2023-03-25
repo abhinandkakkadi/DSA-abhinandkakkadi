@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 	"unicode"
 )
 
@@ -18,15 +17,28 @@ func main() {
 		fmt.Println("Element is present at the position")
 	}
 
-	// max and min element of an array using recursion
-	min := math.MaxInt64
-  max := math.MinInt64
-	
-	min,max := maxMin(arr,0,len(arr)-1,max,min)
-	fmt.Println("Max and Min value inside the array are max:= ",max," min:= ",min)
 
 	// Find first capital letter in an array
-	str
+	str := "abhInand"
+	result := capital(str,0,len(str)-1)
+
+	if( result == "") {
+		fmt.Println("No Caps")
+	} else {
+		fmt.Println(result)
+	}
+ 
+	// Reverse a string
+	strR := "abhinand"
+	strRConvert := []byte(strR)
+	reversed := reverse(strRConvert,0,len(strR)-1)
+	fmt.Println(string(reversed))
+
+	// Print a number from 1 - N
+	var size int
+	fmt.Println("Enter range")
+	fmt.Scanf("%d",&size)
+	print(1,size)
 }
 
 
@@ -43,7 +55,7 @@ func fib(n int) int {
 
 
 // implement binary  search using recursion
- func bSearch(arr []int,target int,s int,e int,max int,min int) int {
+ func bSearch(arr []int,target int,s int,e int) int {
 
 	if s > e {
 		return -1
@@ -65,26 +77,6 @@ func fib(n int) int {
 	return bSearch(arr,target,s,e)
 
 	}
- 
-
-	// find minimum and maximum value in an array using recursion
-	func maxMin(arr []int,s int, e int, min int, max int) (int,int) {
-
-		if(s == e+1) {
-			return min,max
-		}
-	 
-		if arr[s] > max {
-			max = arr[s]
-		}
-	 
-		if arr[s] < min {
-			min = arr[s]
-		}
-	 
-		return maxMin(arr,s+1,e,min,max)
-		
-	 }
 	 
  
 	//  find first capital letter in a  string
@@ -119,7 +111,7 @@ func fib(n int) int {
 	 
 
 	//  Print numbers from 1 - N using recursion
-	func reverse(n int,size int) {
+	func print(n int,size int) {
 
 
 		if n == size {
@@ -129,7 +121,7 @@ func fib(n int) int {
 	 
 	 
 		fmt.Println(n);
-		reverse(n+1,size)
+		print(n+1,size)
 	 
 	 
 	 }
