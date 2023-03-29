@@ -18,8 +18,20 @@ func main() {
 	bubblePortion(arr2,2)
 	fmt.Println(arr2)
 
+	// bubbleSort on strings
+	str := "abhinand"
+	str2 := []byte(str)
+	bubbleStrings(str2)
+	fmt.Println(string(str2))
+
+	// Number of swaps required to sort the array
+	arr3 := []int{1,34,2,2,564,2}
+	count := bubbleCount(arr3,0)
+	fmt.Println("Total swap done in this array = ",count,arr3)
+
 }
 
+// bubble sort
 func bubbleSort(arr []int) {
 	
 	for i:=0; i< len(arr); i++ {
@@ -80,4 +92,58 @@ func bubblePortion(arr2 []int,portion int) {
 			break
 		}
 	}
+}
+
+
+// bubble sort on strings
+
+func bubbleStrings(str2 []byte) {
+
+	var swap bool
+
+	for i:=0; i< len(str2); i++ {
+		swap = false
+		for j:=0; j < len(str2)-i-1 ; j++ {
+
+			if str2[j] > str2[j+1] {
+				swap = true
+				str2[j],str2[j+1] = str2[j+1],str2[j]
+
+			}
+		}
+
+		if !swap {
+			break
+		}
+	}
+}
+
+
+// Number of swaps required to sort an array
+
+func bubbleCount(arr3 []int,n int) int {
+
+	var swap bool
+
+	for i:=0; i< len(arr3); i++ {
+
+		swap = false
+
+		for j:=0; j< len(arr3) - i - 1; j++ {
+
+			if arr3[j] > arr3[j+1] {
+				n++
+				swap = true
+				arr3[j],arr3[j+1] = arr3[j+1],arr3[j]
+			}
+		}
+
+		if !swap {
+
+			break
+
+		}
+	}
+
+	return n
 }

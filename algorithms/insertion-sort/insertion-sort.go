@@ -14,6 +14,8 @@ func main() {
 
 }
 
+
+
 func insertionSort(arr []int) {
 
 	var current int
