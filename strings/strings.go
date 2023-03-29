@@ -47,10 +47,12 @@ func length(word string) {
 func uppercase(word string) {
  var ch []rune
  for _,val := range  word {
+  fmt.Printf("%T",val)
    ch = append(ch, unicode.ToUpper(val))
  }
  fmt.Println(string(ch))
 }
+
 
 
 // check whether the string is palindrome
