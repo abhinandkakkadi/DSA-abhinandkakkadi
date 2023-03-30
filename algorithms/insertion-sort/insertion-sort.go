@@ -6,15 +6,24 @@ func main() {
 
 	arr := []int{1,5,2,25,222,23}
 
+	// Ascending order
 	insertionSort(arr)
 	fmt.Println(arr)
 
+	// Descending order
 	insertionSortDescending(arr)
 	fmt.Println(arr)
+
+	// sort string
+	str := "athira"
+	str2 := []byte(str)
+	insertionString(str2)
+	fmt.Println(string(str2))
 
 }
 
 
+// Ascending order
 
 func insertionSort(arr []int) {
 
@@ -33,6 +42,7 @@ func insertionSort(arr []int) {
 	}
 }
 
+// descending order
 func insertionSortDescending(arr []int) {
 
 	var current int
@@ -49,5 +59,26 @@ func insertionSortDescending(arr []int) {
 
 		}
 		arr[j+1] = current
+	}
+}
+
+// sort string
+func insertionString(str2 []byte) {
+
+	for i:=1; i < len(str2); i++ {
+
+		current := str2[i]
+		j := i -1
+
+		for j >=0 && current < str2[j] {
+
+			str2[j+1] = str2[j]
+			j--
+
+		}
+
+		str2[j+1] = current
+
+
 	}
 }

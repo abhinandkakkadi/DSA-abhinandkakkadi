@@ -9,6 +9,8 @@ func main() {
 	// searching
 	selectionSort(arr)
 	fmt.Println(arr)
+
+	// 
 }
 
 func selectionSort(arr []int) {
