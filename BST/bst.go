@@ -29,6 +29,10 @@ func main() {
 	b.Insert(9)
 	b.Insert(43)
 
+	// search an element in the BST
+	sh := search(b.root,43)
+	fmt.Println(sh)
+
 	// checking whether a binary tree is a Binary search tree or not
 	fmt.Print("In-order traversal : ")
 	inOrder(b.root)
@@ -58,15 +62,19 @@ func main() {
 	leftView(b.root,1)
 	fmt.Println()
 
-	// search an element in the BST
-	// sh := search(b.root,0)
-	// fmt.Println(sh)
 
 	// search an element using iterative in BST
 	k := iSearch(b.root,43)
 	fmt.Println(k)
 
-	// insert()
+	// check whether a given tree is a binary tree
+	check := isBST(b.root,math.MinInt,math.MaxInt)
+	fmt.Println("Check whether a tree is BST or not ",check)
+
+	// find closest element in  BST
+	close := closest(b.root,9)
+	fmt.Println("the closest is ",close)
+	
 
 }
 
@@ -98,6 +106,9 @@ func addNode(root *Node, value int) *Node {
 	return root
 }
 
+
+// Delete an element in a BST
+
 func (b *binarySearchTree) Delete(value int) {
 
 	b.root = delete(b.root,value)
@@ -105,8 +116,8 @@ func (b *binarySearchTree) Delete(value int) {
 
 func delete(root *Node, value int) *Node {
 
-	if root == nil {
-		return root
+	if root == nil {    
+		return root      // If element is not present inside the BST
 	}
 
 	if value > root.key {
@@ -146,6 +157,7 @@ func getSuc(c *Node) *Node {
 }
 
 // search for an element
+
 
 func search(root *Node, data int) bool {
 
@@ -241,4 +253,48 @@ func iSearch(root *Node, data int) bool {
 	}
 
 	return false
+}
+
+
+// Check whether a Tree is BST or not
+
+func isBST(root *Node, min int, max int) bool {
+
+	if root == nil {
+		return true
+	}
+
+	return root.key > min && root.key < max && isBST(root.left, min, root.key) && isBST(root.right,root.key, max)
+}
+
+
+
+// closest of an element
+func closest(root *Node, value int) int {
+
+	if root == nil {
+		return -1
+	}
+
+	minDiff := math.MaxInt
+	var currentElement int
+
+	for root != nil {
+
+		currentDifference := math.Abs(float64(root.key)-float64(value))
+
+		if currentDifference < float64(minDiff) {
+			minDiff = int(currentDifference)
+			currentElement = root.key
+		}
+
+		if value < root.key {
+			root = root.left
+		} else if value > root.key {
+			root = root.right
+		} else {
+			break
+		}
+	}
+	return currentElement
 }
