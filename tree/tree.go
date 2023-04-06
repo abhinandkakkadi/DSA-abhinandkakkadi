@@ -18,12 +18,12 @@ type binaryTree struct {
 
 func main() {
 
-	node1 := &Node{nil,23,nil}
-	node2 := &Node{nil,24,nil}
-	node3 := &Node{nil,25,nil}
+	node1 := &Node{nil,7,nil}
+	node2 := &Node{nil,2,nil}
+	node3 := &Node{nil,1,nil}
 
-	node4 := &Node{nil,26,nil}
-	node5 := &Node{nil,27,nil}
+	node4 := &Node{nil,0,nil}
+	node5 := &Node{nil,4,nil}
 
 	b := &binaryTree{}
 
