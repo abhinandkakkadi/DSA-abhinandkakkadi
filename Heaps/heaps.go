@@ -2,16 +2,19 @@ package main
 
 import "fmt"
 
+// MAX HEAP
+
 type MaxHeap struct {
 	
 	array []int
 
 }
 
+
 func (h *MaxHeap) Insert(key int) {
 
 	h.array = append(h.array, key)
-	h.MaxHeapify(len(h.array)-1)
+	h.MaxHeapifyUp(len(h.array)-1)
 
 }
 
@@ -76,6 +79,69 @@ func (h *MaxHeap) MaxHeapifyDown(index int) {
 
 }
 
+
+// MIN HEAP
+
+type MinHeap struct {
+	array []int
+}
+
+// Insert value in Min heap
+func (mH *MinHeap) Insert(value int) {
+
+	mH.array = append(mH.array, value)
+	mH.MinHeapifyUp(len(mH.array)-1)
+
+}
+
+func (mH *MinHeap) MinHeapifyUp(index int) {
+
+	for mH.array[index] < mH.array[parent(index)] {
+		mH.swap(index,parent(index))
+		index = parent(index)
+	}
+}
+
+//	Extract value int Min Heap
+
+func (mH *MinHeap) Extract() {
+
+	l := len(mH.array) - 1
+	mH.array[0] = mH.array[l]
+	mH.array = mH.array[:l]
+	mH.MinHeapifyDown(0)
+}
+
+func (mH *MinHeap) MinHeapifyDown(index int) {
+
+	lastIndex := len(mH.array) - 1
+	l,r := leftChild(index),rightChild(index)
+	compareChild := 0
+
+	for l <= lastIndex {
+
+		if l == lastIndex {
+			compareChild = l
+		} else if mH.array[l] > mH.array[r] {
+			compareChild = l
+		} else {
+			compareChild = r
+		}
+
+		if mH.array[index] > mH.array[compareChild] {
+			mH.swap(index,compareChild)
+			index = compareChild
+			l,r = leftChild(index),rightChild(index)
+		} else {
+			return
+		}
+	}
+}
+
+
+
+// COMMON OPERATIONS
+
 // get the parent index
 func parent(i int) int {
 	return (i-1)/2
@@ -91,10 +157,17 @@ func rightChild(i int) int {
 	return 2*i + 2
 }
 
-// swap two nodes
+// swap two nodes MaxHeap
 func (h *MaxHeap) swap(i1,i2 int) {
 
 	h.array[i1],h.array[i2] = h.array[i2],h.array[i1]
+
+}
+
+// swap two nodes MinHeap
+func (mH *MinHeap) swap(i1, i2 int) {
+
+	mH.array[i1],mH.array[i2] = mH.array[i2],mH.array[i1]
 
 }
 
@@ -104,6 +177,18 @@ func main() {
 	h.Insert(23)
 	h.Insert(34)
 	h.Insert(22)
+	h.Insert(2)
 
 	fmt.Println(h)
+
+	minH := &MinHeap{}
+	minH.Insert(23)
+	minH.Insert(34)
+	minH.Insert(22)
+	minH.Insert(2)
+	fmt.Println(minH)
+
+	minH.Extract()
+	fmt.Println(minH)
+
 }
