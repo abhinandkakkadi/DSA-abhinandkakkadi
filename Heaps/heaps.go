@@ -173,22 +173,120 @@ func (mH *MinHeap) swap(i1, i2 int) {
 
 func main() {
 
-	h := &MaxHeap{}
-	h.Insert(23)
-	h.Insert(34)
-	h.Insert(22)
-	h.Insert(2)
+	// h := &MaxHeap{}
+	// h.Insert(23)
+	// h.Insert(34)
+	// h.Insert(22)
+	// h.Insert(2)
 
-	fmt.Println(h)
+	// fmt.Println(h)
+	
+	// fmt.Println(minH)
 
-	minH := &MinHeap{}
-	minH.Insert(23)
-	minH.Insert(34)
-	minH.Insert(22)
-	minH.Insert(2)
-	fmt.Println(minH)
+	// minH := &MinHeap{}
+	// minH.Insert(23)
+	// minH.Insert(34)
+	// minH.Insert(22)
+	// minH.Insert(2)
+	// fmt.Println(minH)
 
-	minH.Extract()
-	fmt.Println(minH)
+	// minH.Extract()
+	// fmt.Println(minH)
 
+	s := MaxHeapSorting{top:-1}
+	s.Insert(23)
+	s.Insert(3)
+	s.Insert(24)
+	s.Insert(4)
+	s.Insert(344)
+	s.Insert(34)
+	s.Insert(342)
+	s.Insert(1)
+	s.Insert(2)
+	s.Insert(5)
+	s.Insert(6)
+
+	fmt.Println(s.array)
+
+	l := s.top
+	for i:=0; i<=s.top; i++ {
+		s.HeapSort(l)
+		l--
+	}
+
+	fmt.Println(s.array)
+}
+
+
+// Code For heap Sort
+const size = 10
+type MaxHeapSorting struct {
+
+	array [size]int
+	top int
+}
+
+
+func (s *MaxHeapSorting) HeapSort(l int) {
+
+	s.array[0],s.array[l] = s.array[l], s.array[0]
+	l--
+	s.MaxHeapifyDown(0,l)
+}
+
+func (s *MaxHeapSorting) MaxHeapifyDown(index int, l int) {
+
+	le,re := leftChild(index),rightChild(index)
+	compareChild := index
+
+	for le <= l {
+		if le == l {
+			compareChild = le
+		} else if s.array[le] > s.array[re] {
+			compareChild = le
+		} else {
+			compareChild = re
+		}
+
+		if s.array[index] < s.array[compareChild] {
+			s.array[index],s.array[compareChild] = s.array[compareChild],s.array[index]
+			index = compareChild
+			le,re = leftChild(index),rightChild(index)
+		} else {
+			return 
+		}
+	}
+
+
+}
+
+
+
+
+func (s *MaxHeapSorting) Insert(value int) {
+
+	s.top++
+
+	if s.top == size {
+		fmt.Println("heap full")
+		s.top--
+		return
+	}
+
+	s.array[s.top] = value
+	s.HeapifySortUp(s.top)
+}
+
+func (s *MaxHeapSorting) HeapifySortUp(index int) {
+
+	for s.array[index] > s.array[parent(index)] {
+		s.swap(index,parent(index))
+		index = parent(index)
+	}
+
+}
+
+
+func (s *MaxHeapSorting) swap(i1, i2 int) {
+	s.array[i1],s.array[i2] = s.array[i2], s.array[i1]
 }
