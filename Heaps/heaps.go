@@ -173,25 +173,25 @@ func (mH *MinHeap) swap(i1, i2 int) {
 
 func main() {
 
-	// h := &MaxHeap{}
-	// h.Insert(23)
-	// h.Insert(34)
-	// h.Insert(22)
-	// h.Insert(2)
+	h := &MaxHeap{}
+	h.Insert(23)
+	h.Insert(34)
+	h.Insert(22)
+	h.Insert(2)
 
-	// fmt.Println(h)
+	fmt.Println(h)
 	
-	// fmt.Println(minH)
+	fmt.Println(minH)
 
-	// minH := &MinHeap{}
-	// minH.Insert(23)
-	// minH.Insert(34)
-	// minH.Insert(22)
-	// minH.Insert(2)
-	// fmt.Println(minH)
+	minH := &MinHeap{}
+	minH.Insert(23)
+	minH.Insert(34)
+	minH.Insert(22)
+	minH.Insert(2)
+	fmt.Println(minH)
 
-	// minH.Extract()
-	// fmt.Println(minH)
+	minH.Extract()
+	fmt.Println(minH)
 
 	s := MaxHeapSorting{top:-1}
 	s.Insert(23)
