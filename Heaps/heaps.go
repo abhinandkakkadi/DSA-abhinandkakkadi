@@ -171,6 +171,79 @@ func (mH *MinHeap) swap(i1, i2 int) {
 
 }
 
+
+// Code For heap Sort
+const size = 10
+type MaxHeapSorting struct {
+
+	array [size]int
+	top int
+}
+
+
+func (s *MaxHeapSorting) HeapSort(l int) {
+
+	s.array[0],s.array[l] = s.array[l], s.array[0]
+	l--
+	s.MaxHeapifyDown(0,l)
+}
+
+func (s *MaxHeapSorting) MaxHeapifyDown(index int, l int) {
+
+	le,re := leftChild(index),rightChild(index)
+	compareChild := index
+
+	for le <= l {
+		if le == l {
+			compareChild = le
+		} else if s.array[le] > s.array[re] {
+			compareChild = le
+		} else {
+			compareChild = re
+		}
+
+		if s.array[index] < s.array[compareChild] {
+			s.array[index],s.array[compareChild] = s.array[compareChild],s.array[index]
+			index = compareChild
+			le,re = leftChild(index),rightChild(index)
+		} else {
+			return 
+		}
+	}
+
+
+}
+
+
+func (s *MaxHeapSorting) Insert(value int) {
+
+	s.top++
+
+	if s.top == size {
+		fmt.Println("heap full")
+		s.top--
+		return
+	}
+
+	s.array[s.top] = value
+	s.HeapifySortUp(s.top)
+}
+
+func (s *MaxHeapSorting) HeapifySortUp(index int) {
+
+	for s.array[index] > s.array[parent(index)] {
+		s.swap(index,parent(index))
+		index = parent(index)
+	}
+
+}
+
+
+func (s *MaxHeapSorting) swap(i1, i2 int) {
+	s.array[i1],s.array[i2] = s.array[i2], s.array[i1]
+}
+
+
 func main() {
 	// implementation of maxheap
 	h := &MaxHeap{}
@@ -220,76 +293,3 @@ func main() {
 	fmt.Println(s.array)
 }
 
-
-// Code For heap Sort
-const size = 10
-type MaxHeapSorting struct {
-
-	array [size]int
-	top int
-}
-
-
-func (s *MaxHeapSorting) HeapSort(l int) {
-
-	s.array[0],s.array[l] = s.array[l], s.array[0]
-	l--
-	s.MaxHeapifyDown(0,l)
-}
-
-func (s *MaxHeapSorting) MaxHeapifyDown(index int, l int) {
-
-	le,re := leftChild(index),rightChild(index)
-	compareChild := index
-
-	for le <= l {
-		if le == l {
-			compareChild = le
-		} else if s.array[le] > s.array[re] {
-			compareChild = le
-		} else {
-			compareChild = re
-		}
-
-		if s.array[index] < s.array[compareChild] {
-			s.array[index],s.array[compareChild] = s.array[compareChild],s.array[index]
-			index = compareChild
-			le,re = leftChild(index),rightChild(index)
-		} else {
-			return 
-		}
-	}
-
-
-}
-
-
-
-
-func (s *MaxHeapSorting) Insert(value int) {
-
-	s.top++
-
-	if s.top == size {
-		fmt.Println("heap full")
-		s.top--
-		return
-	}
-
-	s.array[s.top] = value
-	s.HeapifySortUp(s.top)
-}
-
-func (s *MaxHeapSorting) HeapifySortUp(index int) {
-
-	for s.array[index] > s.array[parent(index)] {
-		s.swap(index,parent(index))
-		index = parent(index)
-	}
-
-}
-
-
-func (s *MaxHeapSorting) swap(i1, i2 int) {
-	s.array[i1],s.array[i2] = s.array[i2], s.array[i1]
-}
