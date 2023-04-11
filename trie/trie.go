@@ -39,12 +39,37 @@ func (t *Trie) Insert(w string) {
 
 
 // Search
+func (t *Trie) Search(w string) bool {
 
+	currentNode := t.root
+
+	for i := 0; i < len(w); i++ {
+
+		currentIndex := w[i] - 'a'
+		if currentNode.children[currentIndex] == nil {
+			return false
+		}
+		currentNode = currentNode.children[currentIndex]
+
+	}
+
+	if currentNode.isEnd == true {
+		return true
+	} 
+
+	return false
+}
 
 
 func main() {
 
-	testTrie := InitTrie()
-	fmt.Println(testTrie.root)
+	t := InitTrie()
+	t.Insert("abhinand")
+	t.Insert("athira")
+
+	fmt.Println(t.Search("abhinand"))
+	fmt.Println(t.Search("athira"))
+	
+	
 
 }
