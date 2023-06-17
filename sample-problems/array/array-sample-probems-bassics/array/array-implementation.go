@@ -98,7 +98,6 @@ func MoveZeroes(arr []int) {
 }
 
 // union of two array
-
 func UnionArray(arr1 []int, arr2 []int) []int {
 
 	l1 := len(arr1)

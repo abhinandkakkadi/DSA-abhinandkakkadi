@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"dsa/sampleproblems/arrays/array"
+	"fmt"
 )
 
 func main() {
@@ -38,9 +38,6 @@ func main() {
 	arr7 := []int{1,2,3,4,5,6,8}
 	unionArray := array.UnionArray(arr6,arr7)
 	fmt.Println("union of sorted array",unionArray)
-
-	
-
 
 }
 
