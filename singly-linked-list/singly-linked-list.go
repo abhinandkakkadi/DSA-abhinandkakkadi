@@ -43,7 +43,6 @@ func main() {
 	list.displayElements()
 	fmt.Println()
 
-
 	// 	Insert Nodes before and after a specified node
 
 	list.addNodeBeforeAfter(7)
@@ -58,15 +57,11 @@ func main() {
 
 }
 
-
-
-
-
 // Add elements at the head of Linked List
 
 func (list *LinkedList) addAtHead(value int) {
 
-	node := &Node{value,nil}
+	node := &Node{value, nil}
 
 	if list.head == nil {
 		list.head = node
@@ -80,19 +75,18 @@ func (list *LinkedList) addAtHead(value int) {
 
 func (list *LinkedList) addAtEnd(value int) {
 
-	node := &Node{value,nil}
+	node := &Node{value, nil}
 	temp := list.head
 
 	if temp == nil {
 		list.head = node
 	} else {
 		for temp.next != nil {
-			temp =temp.next
+			temp = temp.next
 		}
 		temp.next = node
 	}
 }
-
 
 // Delete a Node with value specified
 
@@ -121,13 +115,13 @@ func (list *LinkedList) deleteValue(value int) {
 	}
 }
 
-// Add Node Before And After 
+// Add Node Before And After
 
 func (list *LinkedList) addNodeBeforeAfter(value int) {
 
-	temp := list.head 
-	node1 := &Node{5,nil}
-	node2 := &Node{5,nil}
+	temp := list.head
+	node1 := &Node{5, nil}
+	node2 := &Node{5, nil}
 
 	if temp == nil {
 		fmt.Println("Empty list")
@@ -157,22 +151,20 @@ func (list *LinkedList) addNodeBeforeAfter(value int) {
 		if temp.next != nil {
 			temp = temp.next
 		}
-		
-	}
 
+	}
 
 }
 
 // Remove duplicates from the linked list in Sorted Linked list
 
-
 func (list *LinkedList) removeDuplicates() {
 
 	temp := list.head
 
-	for temp.next!= nil {
+	for temp.next != nil {
 		for temp.data == temp.next.data {
-			temp.next =temp.next.next
+			temp.next = temp.next.next
 
 			if temp.next == nil {
 				return
@@ -185,9 +177,7 @@ func (list *LinkedList) removeDuplicates() {
 	}
 }
 
-
-
-// display elements of the linked list 
+// display elements of the linked list
 
 func (list *LinkedList) displayElements() {
 
@@ -196,10 +186,9 @@ func (list *LinkedList) displayElements() {
 	if temp == nil {
 		fmt.Println("List empty")
 	} else {
-		for temp!= nil {
+		for temp != nil {
 			fmt.Println(temp.data)
-			temp= temp.next
+			temp = temp.next
 		}
 	}
 }
-

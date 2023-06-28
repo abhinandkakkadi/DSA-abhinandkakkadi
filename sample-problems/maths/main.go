@@ -28,6 +28,14 @@ func main() {
 	num3 := 5
 	r := fact(num3)
 	fmt.Println("factorial of a number", r)
+
+	// gcd of 2 numbers
+	// APPROACH : take the smaller number of 2 and check if that is the gcd, if not take half of it until the condition becomes true
+	a := 11
+	b := 9
+	gcd := greatestCD(a, b)
+	fmt.Println("GCD of 2 numbers : ", gcd)
+
 }
 
 // sum of digits
@@ -73,4 +81,23 @@ func fact(num int) int {
 	}
 
 	return res
+}
+
+func greatestCD(a int, b int) int {
+
+	var small int
+	if a < b {
+		small = a
+	} else {
+		small = b
+	}
+
+	for true {
+		if a%small == 0 && b%small == 0 {
+			return small
+		}
+		small = small / 2
+	}
+
+	return 1
 }

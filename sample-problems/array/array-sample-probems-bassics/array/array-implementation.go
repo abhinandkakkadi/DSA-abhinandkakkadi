@@ -1,9 +1,8 @@
 package array
 
-
 func LargestElement(arr []int) int {
 	largest := arr[0]
-	for i := 1 ; i < len(arr); i++ {
+	for i := 1; i < len(arr); i++ {
 		if largest < arr[i] {
 			largest = arr[i]
 		}
@@ -25,7 +24,7 @@ func SecondLargest(arr []int) int {
 	}
 
 	for i := 2; i < len(arr); i++ {
-		
+
 		if arr[i] > largest {
 
 			secondLargest = largest
@@ -34,7 +33,7 @@ func SecondLargest(arr []int) int {
 		} else if arr[i] > secondLargest {
 
 			secondLargest = arr[i]
-			
+
 		}
 	}
 
@@ -46,35 +45,35 @@ func SecondLargest(arr []int) int {
 
 func RemoveDuplicatesFromSortedArray(arr []int) int {
 
-		temp := arr[0]
-		j := 0
+	temp := arr[0]
+	j := 0
 
-		for i := 1 ; i < len(arr); i++ {
+	for i := 1; i < len(arr); i++ {
 
-			if arr[i] != temp {
-				j++
-				arr[j] = arr[i]
-				temp = arr[j]
-			}
+		if arr[i] != temp {
+			j++
+			arr[j] = arr[i]
+			temp = arr[j]
 		}
+	}
 
-		return j+1
+	return j + 1
 }
 
 // left rotate array
 
 func LeftRotate(arr []int, n int) {
-	
+
 	if n > len(arr)-1 {
-		n = n%len(arr)-1
+		n = n%len(arr) - 1
 	}
 
 	for n > 0 {
 
 		temp := arr[0]
-		for i :=0; i < len(arr)-1 ; i++ {
+		for i := 0; i < len(arr)-1; i++ {
 			arr[i] = arr[i+1]
-		}	
+		}
 		n--
 		arr[len(arr)-1] = temp
 
@@ -91,9 +90,9 @@ func MoveZeroes(arr []int) {
 
 		if arr[i] != 0 {
 			j++
-			arr[j],arr[i] = arr[i],arr[j]
+			arr[j], arr[i] = arr[i], arr[j]
 		}
-		
+
 	}
 }
 
@@ -106,38 +105,36 @@ func UnionArray(arr1 []int, arr2 []int) []int {
 	k := 0
 	i := 0
 	j := 0
-	for i < l1 && j < l2  {
+	for i < l1 && j < l2 {
 
 		if arr1[i] <= arr2[j] {
-			if k==0 || arr3[k-1]!= arr1[i] {
+			if k == 0 || arr3[k-1] != arr1[i] {
 				arr3 = append(arr3, arr1[i])
 				k++
-				
+
 			}
 			i++
-			
+
 		} else {
-			if k==0 || arr3[k-1]!= arr2[j] {
+			if k == 0 || arr3[k-1] != arr2[j] {
 				arr3 = append(arr3, arr2[j])
 				k++
-				
+
 			}
 			j++
 		}
 
-		
-
 	}
 
-	for ;i < l1; i++ {
-		if k==0 || arr3[k-1]!= arr1[i] {
+	for ; i < l1; i++ {
+		if k == 0 || arr3[k-1] != arr1[i] {
 			arr3 = append(arr3, arr1[i])
 			k++
 		}
 	}
 
-	for ;j < l2; j++ {
-		if k==0 || arr3[k-1]!= arr2[j] {
+	for ; j < l2; j++ {
+		if k == 0 || arr3[k-1] != arr2[j] {
 			arr3 = append(arr3, arr2[j])
 			k++
 		}
@@ -146,5 +143,3 @@ func UnionArray(arr1 []int, arr2 []int) []int {
 	return arr3
 
 }
-
-

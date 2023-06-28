@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	arr := []int{1,5,2,25,222,23}
+	arr := []int{1, 5, 2, 25, 222, 23}
 
 	// Ascending order
 	insertionSort(arr)
@@ -22,18 +22,17 @@ func main() {
 
 }
 
-
 // Ascending order
 
 func insertionSort(arr []int) {
 
 	var current int
 	var j int
-	for i:=1; i< len(arr); i++ {
+	for i := 1; i < len(arr); i++ {
 		current = arr[i]
-		j = i-1
+		j = i - 1
 
-		for j>=0 && arr[j] > current {
+		for j >= 0 && arr[j] > current {
 			arr[j+1] = arr[j]
 			j--
 		}
@@ -47,13 +46,13 @@ func insertionSortDescending(arr []int) {
 
 	var current int
 	var j int
-	for i:=1; i< len(arr); i++ {
+	for i := 1; i < len(arr); i++ {
 
 		current = arr[i]
-		j = i-1
+		j = i - 1
 
-		for j >=0 &&  current > arr[j] {
-			
+		for j >= 0 && current > arr[j] {
+
 			arr[j+1] = arr[j]
 			j--
 
@@ -65,12 +64,12 @@ func insertionSortDescending(arr []int) {
 // sort string
 func insertionString(str2 []byte) {
 
-	for i:=1; i < len(str2); i++ {
+	for i := 1; i < len(str2); i++ {
 
 		current := str2[i]
-		j := i -1
+		j := i - 1
 
-		for j >=0 && current < str2[j] {
+		for j >= 0 && current < str2[j] {
 
 			str2[j+1] = str2[j]
 			j--
@@ -78,7 +77,6 @@ func insertionString(str2 []byte) {
 		}
 
 		str2[j+1] = current
-
 
 	}
 }

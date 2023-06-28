@@ -3,27 +3,23 @@ package main
 import "fmt"
 
 type Node struct {
-
-	left *Node
-	key int
+	left  *Node
+	key   int
 	right *Node
-
 }
 
 type binaryTree struct {
-
 	root *Node
-
 }
 
 func main() {
 
-	node1 := &Node{nil,7,nil}
-	node2 := &Node{nil,2,nil}
-	node3 := &Node{nil,1,nil}
+	node1 := &Node{nil, 7, nil}
+	node2 := &Node{nil, 2, nil}
+	node3 := &Node{nil, 1, nil}
 
-	node4 := &Node{nil,0,nil}
-	node5 := &Node{nil,4,nil}
+	node4 := &Node{nil, 0, nil}
+	node5 := &Node{nil, 4, nil}
 
 	b := &binaryTree{}
 
@@ -46,9 +42,7 @@ func main() {
 	postOrder(b.root)
 	fmt.Println()
 
-
 }
-
 
 // in order traversal
 func inOrder(root *Node) {
@@ -58,11 +52,10 @@ func inOrder(root *Node) {
 	}
 
 	inOrder(root.left)
-	fmt.Print(root.key,"  ")
+	fmt.Print(root.key, "  ")
 	inOrder(root.right)
 
 }
-
 
 // pre order traversal
 func preOrder(root *Node) {
@@ -71,12 +64,11 @@ func preOrder(root *Node) {
 		return
 	}
 
-	fmt.Print(root.key," ")
+	fmt.Print(root.key, " ")
 	inOrder(root.left)
 	inOrder(root.right)
 
 }
-
 
 // post order traversal
 func postOrder(root *Node) {
@@ -87,6 +79,6 @@ func postOrder(root *Node) {
 
 	postOrder(root.left)
 	postOrder(root.right)
-	fmt.Print(root.key," ")
+	fmt.Print(root.key, " ")
 
 }

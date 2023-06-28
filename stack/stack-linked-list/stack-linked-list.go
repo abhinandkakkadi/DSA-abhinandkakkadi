@@ -14,7 +14,7 @@ type stack struct {
 
 func main() {
 
-	s := stack{nil,0}
+	s := stack{nil, 0}
 
 	s.push(1)
 	s.push(2)
@@ -34,7 +34,7 @@ func main() {
 // push value into the stack
 func (s *stack) push(value int) {
 
-	node := &Node{value,nil}
+	node := &Node{value, nil}
 
 	if s.head == nil {
 		s.head = node
@@ -52,11 +52,10 @@ func (s *stack) pop() {
 
 	value := s.head.data
 	s.head = s.head.next
-	fmt.Println("popped element is ",value)
+	fmt.Println("popped element is ", value)
 }
 
-
- // print values present in the stack
+// print values present in the stack
 func (s *stack) print() {
 
 	temp := s.head
@@ -67,7 +66,7 @@ func (s *stack) print() {
 
 	for temp != nil {
 		fmt.Println(temp.data)
-		temp =temp.next
+		temp = temp.next
 	}
 }
 

@@ -8,10 +8,9 @@ type Queue struct {
 	tail int
 }
 
-
 func main() {
 
-	q := Queue{make([]int,0),-1,-1}
+	q := Queue{make([]int, 0), -1, -1}
 	q.Add(2)
 	q.Add(3)
 	q.Add(4)
@@ -20,10 +19,6 @@ func main() {
 	q.Add(7)
 	q.print()
 	fmt.Println()
-	
-	q.Remove()
-	q.print()
-	fmt.Println()
 
 	q.Remove()
 	q.print()
@@ -46,7 +41,11 @@ func main() {
 	fmt.Println()
 
 	q.Remove()
-	
+	q.print()
+	fmt.Println()
+
+	q.Remove()
+
 }
 
 func (q *Queue) Add(value int) {
@@ -54,7 +53,7 @@ func (q *Queue) Add(value int) {
 	if q.head == -1 {
 		q.head = 0
 		q.tail = 0
-		
+
 	} else {
 		q.tail++
 	}
@@ -62,7 +61,7 @@ func (q *Queue) Add(value int) {
 }
 
 func (q *Queue) Remove() {
-	
+
 	if q.head == -1 {
 		fmt.Println("empty queue")
 		return
@@ -84,7 +83,6 @@ func (q *Queue) isEmpty() {
 
 func (q *Queue) print() {
 
-	
 	temp := q.head
 
 	if temp == -1 {
@@ -92,7 +90,7 @@ func (q *Queue) print() {
 		return
 	}
 
-	for temp!=q.tail+1 {
+	for temp != q.tail+1 {
 		fmt.Println(q.data[temp])
 		temp++
 	}

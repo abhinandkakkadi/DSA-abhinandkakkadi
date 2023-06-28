@@ -15,12 +15,9 @@ type bucket struct {
 }
 
 type bucketNode struct {
-	key int
+	key  int
 	next *bucketNode
 }
-
-
-
 
 func (h *HashTable) Insert(value int) {
 
@@ -30,7 +27,7 @@ func (h *HashTable) Insert(value int) {
 
 func (b *bucket) insert(value int) {
 
-	node := &bucketNode{value,nil}
+	node := &bucketNode{value, nil}
 	if b.head == nil {
 		b.head = node
 		return
@@ -46,7 +43,7 @@ func (h *HashTable) Search(value int) bool {
 }
 
 func (b *bucket) search(value int) bool {
-	
+
 	temp := b.head
 
 	if b.head == nil {
@@ -69,7 +66,7 @@ func (b *bucket) search(value int) bool {
 }
 
 func (h *HashTable) Delete(value int) {
-	
+
 	index := hash(value)
 	h.array[index].delete(value)
 
@@ -99,10 +96,8 @@ func (b *bucket) delete(value int) {
 
 func hash(value int) int {
 
-	return value%size
+	return value % size
 }
-
-
 
 func Init() *HashTable {
 
@@ -114,11 +109,9 @@ func Init() *HashTable {
 	return result
 }
 
-
-
 func main() {
 
-	hashTable := Init() 
+	hashTable := Init()
 
 	hashTable.Insert(1)
 	hashTable.Insert(8)

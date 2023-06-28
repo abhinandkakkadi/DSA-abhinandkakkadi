@@ -2,7 +2,6 @@ package main
 
 import "fmt"
 
-
 func main() {
 
 	c := countSetBits(10)
@@ -19,24 +18,24 @@ func main() {
 // method 1
 func countSetBits(n int) int {
 
-	res := 0;
+	res := 0
 
 	for n > 0 {
-		res = res + (n & 1);
-		n = n/2
+		res = res + (n & 1)
+		n = n / 2
 	}
 
-	return res;
+	return res
 
 }
 
-// method 2 
+// method 2
 func countSetBrain(n int) int {
 
-	res := 0;
+	res := 0
 
 	for n > 0 {
-		n = n & (n-1)
+		n = n & (n - 1)
 		res++
 	}
 
@@ -63,5 +62,5 @@ func powerOfTwo(n int) bool {
 	// }
 	// return false
 
-	return (n & (n-1)) == 0
+	return (n & (n - 1)) == 0
 }

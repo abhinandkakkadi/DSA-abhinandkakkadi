@@ -4,13 +4,12 @@ import "fmt"
 
 type stack struct {
 	data []int
-	top int
+	top  int
 }
-
 
 func main() {
 
-	s := stack{make([]int,0),-1}
+	s := stack{make([]int, 0), -1}
 
 	s.push(1)
 	s.push(2)
@@ -30,13 +29,11 @@ func main() {
 		fmt.Println("list not empty")
 	}
 
-	
-
 }
 
 func (s *stack) push(value int) {
 	s.top++
-	s.data =append(s.data,value)
+	s.data = append(s.data, value)
 }
 
 func (s *stack) pop() {

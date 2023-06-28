@@ -5,23 +5,20 @@ import "fmt"
 // MAX HEAP
 
 type MaxHeap struct {
-	
 	array []int
-
 }
-
 
 func (h *MaxHeap) Insert(key int) {
 
 	h.array = append(h.array, key)
-	h.MaxHeapifyUp(len(h.array)-1)
+	h.MaxHeapifyUp(len(h.array) - 1)
 
 }
 
 func (h *MaxHeap) Extract(key int) int {
 
 	extracted := h.array[0]
-	l := len(h.array)-1
+	l := len(h.array) - 1
 
 	if len(h.array) == 0 {
 		fmt.Println("cannot extract becuase array length is 0")
@@ -35,15 +32,13 @@ func (h *MaxHeap) Extract(key int) int {
 
 	return extracted
 
-
 }
 
-
-// maxHeapify will heapify from bottom top  
-func (h  *MaxHeap) MaxHeapifyUp(index int) {
+// maxHeapify will heapify from bottom top
+func (h *MaxHeap) MaxHeapifyUp(index int) {
 
 	for h.array[parent(index)] < h.array[index] {
-		h.swap(parent(index),index)
+		h.swap(parent(index), index)
 		index = parent(index)
 	}
 }
@@ -53,7 +48,7 @@ func (h  *MaxHeap) MaxHeapifyUp(index int) {
 func (h *MaxHeap) MaxHeapifyDown(index int) {
 
 	lastIndex := len(h.array) - 1
-	l,r := leftChild(index),rightChild(index)
+	l, r := leftChild(index), rightChild(index)
 	childToCompare := 0
 
 	for l <= lastIndex {
@@ -67,18 +62,16 @@ func (h *MaxHeap) MaxHeapifyDown(index int) {
 		}
 
 		if h.array[index] < h.array[childToCompare] {
-			h.swap(index,childToCompare)
+			h.swap(index, childToCompare)
 			index := childToCompare
-			l,r = leftChild(index),rightChild(index )
+			l, r = leftChild(index), rightChild(index)
 		} else {
 			return
 		}
 
-
-	}	
+	}
 
 }
-
 
 // MIN HEAP
 
@@ -90,14 +83,14 @@ type MinHeap struct {
 func (mH *MinHeap) Insert(value int) {
 
 	mH.array = append(mH.array, value)
-	mH.MinHeapifyUp(len(mH.array)-1)
+	mH.MinHeapifyUp(len(mH.array) - 1)
 
 }
 
 func (mH *MinHeap) MinHeapifyUp(index int) {
 
 	for mH.array[index] < mH.array[parent(index)] {
-		mH.swap(index,parent(index))
+		mH.swap(index, parent(index))
 		index = parent(index)
 	}
 }
@@ -115,7 +108,7 @@ func (mH *MinHeap) Extract() {
 func (mH *MinHeap) MinHeapifyDown(index int) {
 
 	lastIndex := len(mH.array) - 1
-	l,r := leftChild(index),rightChild(index)
+	l, r := leftChild(index), rightChild(index)
 	compareChild := 0
 
 	for l <= lastIndex {
@@ -129,22 +122,20 @@ func (mH *MinHeap) MinHeapifyDown(index int) {
 		}
 
 		if mH.array[index] > mH.array[compareChild] {
-			mH.swap(index,compareChild)
+			mH.swap(index, compareChild)
 			index = compareChild
-			l,r = leftChild(index),rightChild(index)
+			l, r = leftChild(index), rightChild(index)
 		} else {
 			return
 		}
 	}
 }
 
-
-
 // COMMON OPERATIONS
 
 // get the parent index
 func parent(i int) int {
-	return (i-1)/2
+	return (i - 1) / 2
 }
 
 // get the left child
@@ -158,39 +149,37 @@ func rightChild(i int) int {
 }
 
 // swap two nodes MaxHeap
-func (h *MaxHeap) swap(i1,i2 int) {
+func (h *MaxHeap) swap(i1, i2 int) {
 
-	h.array[i1],h.array[i2] = h.array[i2],h.array[i1]
+	h.array[i1], h.array[i2] = h.array[i2], h.array[i1]
 
 }
 
 // swap two nodes MinHeap
 func (mH *MinHeap) swap(i1, i2 int) {
 
-	mH.array[i1],mH.array[i2] = mH.array[i2],mH.array[i1]
+	mH.array[i1], mH.array[i2] = mH.array[i2], mH.array[i1]
 
 }
-
 
 // Code For heap Sort
 const size = 10
+
 type MaxHeapSorting struct {
-
 	array [size]int
-	top int
+	top   int
 }
-
 
 func (s *MaxHeapSorting) HeapSort(l int) {
 
-	s.array[0],s.array[l] = s.array[l], s.array[0]
+	s.array[0], s.array[l] = s.array[l], s.array[0]
 	l--
-	s.MaxHeapifyDown(0,l)
+	s.MaxHeapifyDown(0, l)
 }
 
 func (s *MaxHeapSorting) MaxHeapifyDown(index int, l int) {
 
-	le,re := leftChild(index),rightChild(index)
+	le, re := leftChild(index), rightChild(index)
 	compareChild := index
 
 	for le <= l {
@@ -203,17 +192,15 @@ func (s *MaxHeapSorting) MaxHeapifyDown(index int, l int) {
 		}
 
 		if s.array[index] < s.array[compareChild] {
-			s.array[index],s.array[compareChild] = s.array[compareChild],s.array[index]
+			s.array[index], s.array[compareChild] = s.array[compareChild], s.array[index]
 			index = compareChild
-			le,re = leftChild(index),rightChild(index)
+			le, re = leftChild(index), rightChild(index)
 		} else {
-			return 
+			return
 		}
 	}
 
-
 }
-
 
 func (s *MaxHeapSorting) Insert(value int) {
 
@@ -232,17 +219,15 @@ func (s *MaxHeapSorting) Insert(value int) {
 func (s *MaxHeapSorting) HeapifySortUp(index int) {
 
 	for s.array[index] > s.array[parent(index)] {
-		s.swap(index,parent(index))
+		s.swap(index, parent(index))
 		index = parent(index)
 	}
 
 }
 
-
 func (s *MaxHeapSorting) swap(i1, i2 int) {
-	s.array[i1],s.array[i2] = s.array[i2], s.array[i1]
+	s.array[i1], s.array[i2] = s.array[i2], s.array[i1]
 }
-
 
 func main() {
 	// implementation of maxheap
@@ -253,7 +238,6 @@ func main() {
 	h.Insert(2)
 
 	fmt.Println(h)
-	
 
 	// implementation of minheap
 	minH := &MinHeap{}
@@ -267,9 +251,8 @@ func main() {
 	minH.Extract()
 	fmt.Println(minH)
 
-
 	// Heap sorting algorithms
-	s := MaxHeapSorting{top:-1}
+	s := MaxHeapSorting{top: -1}
 	s.Insert(23)
 	s.Insert(3)
 	s.Insert(24)
@@ -285,11 +268,10 @@ func main() {
 	fmt.Println(s.array)
 
 	l := s.top
-	for i:=0; i<=s.top; i++ {
+	for i := 0; i <= s.top; i++ {
 		s.HeapSort(l)
 		l--
 	}
 
 	fmt.Println(s.array)
 }
-

@@ -7,9 +7,8 @@ const size = 26
 
 type Node struct {
 	children [size]*Node
-	isEnd bool
+	isEnd    bool
 }
-
 
 // Trie
 type Trie struct {
@@ -37,7 +36,6 @@ func (t *Trie) Insert(w string) {
 	currentNode.isEnd = true
 }
 
-
 // Search
 func (t *Trie) Search(w string) bool {
 
@@ -55,11 +53,10 @@ func (t *Trie) Search(w string) bool {
 
 	if currentNode.isEnd == true {
 		return true
-	} 
+	}
 
 	return false
 }
-
 
 func main() {
 
@@ -69,7 +66,5 @@ func main() {
 
 	fmt.Println(t.Search("abhinand"))
 	fmt.Println(t.Search("athira"))
-	
-	
 
 }

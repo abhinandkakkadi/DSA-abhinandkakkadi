@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+
 const size = 7
 
 type HashTable struct {
@@ -12,7 +13,7 @@ type bucket struct {
 }
 
 type bucketNode struct {
-	key string
+	key  string
 	next *bucketNode
 }
 
@@ -25,7 +26,6 @@ func Init() *HashTable {
 
 	return result
 }
-
 
 func main() {
 
@@ -43,7 +43,6 @@ func main() {
 	// Delete elements in the Hash Table
 	table.Delete("Abhinand")
 
-
 	fmt.Println(table.Search("Abhinand"))
 	fmt.Println(table.Search("Athira"))
 	fmt.Println(table.Search("Geetha"))
@@ -59,7 +58,7 @@ func (h *HashTable) Insert(k string) {
 
 func (b *bucket) insert(k string) {
 
-	node := &bucketNode{k,nil}
+	node := &bucketNode{k, nil}
 	if b.head == nil {
 		b.head = node
 		return
@@ -93,24 +92,23 @@ func (b *bucket) search(k string) bool {
 
 	for temp != nil {
 		if temp.key == k {
-			return true 
+			return true
 		}
 	}
 
 	return false
 
-
 }
 
 // Delete elements from the Hash Table
-func (h *HashTable) Delete(k string)  {
+func (h *HashTable) Delete(k string) {
 
 	index := hash(k)
 	h.array[index].delete(k)
 
 }
 
-func (b *bucket) delete(k string)  {
+func (b *bucket) delete(k string) {
 
 	temp := b.head
 	if temp == nil {
@@ -132,14 +130,12 @@ func (b *bucket) delete(k string)  {
 }
 
 // hash function
-func hash(k string ) int {
+func hash(k string) int {
 
 	sum := 0
-	for _,val := range k {
+	for _, val := range k {
 		sum += int(val)
 	}
-	return sum%size
-
+	return sum % size
 
 }
-

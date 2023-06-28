@@ -15,7 +15,7 @@ type queue struct {
 
 func main() {
 
-	l := queue{nil,nil,0}
+	l := queue{nil, nil, 0}
 	// adding elements to the queue
 	l.Enqueue(1)
 	l.Enqueue(2)
@@ -35,14 +35,15 @@ func main() {
 	// check whether the queue is empty
 	l.isNull()
 
-	// returns the size of the queue 
-	fmt.Println("size of the queue",l.Size())
+	// returns the size of the queue
+	fmt.Println("size of the queue", l.Size())
 
 }
+
 // Add elements at the end
 func (l *queue) Enqueue(value int) {
 
-	node := &Node{value,nil}
+	node := &Node{value, nil}
 
 	if l.head == nil {
 		l.head = node
@@ -52,7 +53,7 @@ func (l *queue) Enqueue(value int) {
 	}
 
 	l.tail.next = node
-	l.tail  = node
+	l.tail = node
 	l.size++
 
 }
@@ -81,11 +82,11 @@ func (l *queue) print() {
 
 	for temp != nil {
 		fmt.Println(temp.data)
-		temp=temp.next
+		temp = temp.next
 	}
 }
 
-//  peek the first element
+// peek the first element
 func (l *queue) Peek() {
 
 	if l.head == nil {
@@ -106,7 +107,6 @@ func (l *queue) isNull() {
 		fmt.Println("queue not empty")
 	}
 }
-
 
 // return the size of the queue
 func (l *queue) Size() int {
