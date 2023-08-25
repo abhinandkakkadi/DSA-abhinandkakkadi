@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"regexp"
 	"strconv"
 	"strings"
 )
@@ -110,6 +111,23 @@ func main() {
 
 	// delete a substring
 	fmt.Println(deleteSubString("abhinandathira"))
+
+	// delete char at index
+	fmt.Println(deleteCharAtIndex("abhinandathira",0))
+
+	// repeat and concatenate a string count times
+	fmt.Println(repeatString("abhi",4))
+
+	// case insensitive equal
+	fmt.Println(caseInsensitiveEqual("abhi","ABhi"))
+
+	convertToAsci(12,23,34)
+
+	printBackSlash()
+
+	printDoubleQuotes()
+
+	fmt.Println(isMultipleWhiteSpacePresent("abhinand is ok"))
 
 	
 }
@@ -377,5 +395,58 @@ func deleteSubString(str string) string {
 	// here we are deleting that parti
 	// same thing can be done to delete a single character too
 	return strings.ReplaceAll(str,"a","")
-	
+
+}
+
+func deleteCharAtIndex(str string,index int) string {
+
+	str2 := []rune(str)
+
+	str2 = append(str2[:index],str2[index+1:]... )
+	return string(str2)
+
+}
+
+func repeatString(str string,count int) string {
+
+	return strings.Repeat(str,count)
+
+}
+
+func caseInsensitiveEqual(str1 string,str2 string) bool {
+
+	return strings.EqualFold(str1,str2)
+
+}
+
+func convertToAsci(nums ...int) {
+
+	for _, digit := range nums {
+		fmt.Printf("%s",string(digit))
+	}
+}
+
+
+func printBackSlash() {
+
+	fmt.Println("\\abhinand")
+
+	fmt.Println(`\abhinand`)
+}
+
+
+func printDoubleQuotes() {
+
+	fmt.Println("\"abhinand\"")
+
+	fmt.Println(`"abhinand"`)
+
+}
+
+
+func isMultipleWhiteSpacePresent(str string) bool {
+
+	present := regexp.MustCompile(`\s`).MatchString(str)
+	return present
+
 }
